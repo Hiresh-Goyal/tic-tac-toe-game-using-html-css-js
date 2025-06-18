@@ -4,6 +4,7 @@ let turn = document.querySelector("#turn");
 let winmsg = document.querySelector(".win")
 
 let turnO = true;
+let winnerdone = false;
 
 const winning = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
 
@@ -18,6 +19,7 @@ const checkWinner = () =>
             continue;
         if((first == second) && (second == third) && (third == first))
         {
+            winnerdone = true;
             winmsg.innerText = "The winner is "+first;
             winmsg.classList.remove("hide");
             boxes.forEach((box) =>
@@ -25,6 +27,20 @@ const checkWinner = () =>
                     box.disabled = true;
                 })
             break;
+        }
+    }
+    if(!winnerdone)
+    {
+        let empty = false;
+        for(box of boxes)
+        {
+            if(box.innerText == "")
+                empty = true;
+        }
+        if((!empty) && (!winnerdone))
+        {
+            winmsg.innerText = "Its a Draw";
+            winmsg.classList.remove("hide");
         }
     }
 }
