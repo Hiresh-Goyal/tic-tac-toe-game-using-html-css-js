@@ -1,12 +1,33 @@
 let boxes = document.querySelectorAll(".box");
 let resetbtn = document.querySelector("#reset");
 let turn = document.querySelector("#turn");
+let winmsg = document.querySelector(".win")
 
 let turnO = true;
 
 const winning = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
 
 const checkWinner = () =>
+{
+    for(i =0;i<8;i++)
+    {
+        let first = boxes[winning[i][0]].innerText;
+        let second = boxes[winning[i][1]].innerText;
+        let third = boxes[winning[i][2]].innerText;
+        if((first == ""))
+            continue;
+        if((first == second) && (second == third) && (third == first))
+        {
+            winmsg.innerText = "The winner is "+first;
+            winmsg.classList.remove("hide");
+            boxes.forEach((box) =>
+                {
+                    box.disabled = true;
+                })
+            break;
+        }
+    }
+}
 
 
 
@@ -27,6 +48,9 @@ boxes.forEach((box) =>
                 turnO = true;
             }
             box.disabled = true;
+
+            checkWinner();
+
         })
     })
 
@@ -39,4 +63,5 @@ resetbtn.addEventListener("click",() =>
     })
     turn.innerText = "It is O's turn";
     turnO = true;
+    winmsg.classList.add("hide");
 })

@@ -9,6 +9,13 @@ body{
     text-align: center;
 }
 
+.head{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .contain{
     display: flex;
     justify-content: center;
@@ -51,4 +58,13 @@ body{
     background-color: #5E0B15;
     border-radius: 1rem;
     border: none;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+.win{
+    color: #FE4A49;
+    font-size: 50px;
 }
