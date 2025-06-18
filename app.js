@@ -53,12 +53,14 @@ boxes.forEach((box) =>
         {
             if(turnO)
             {
+                box.style.color = "FE4A49";
                 box.innerText = "O";
                 turn.innerText = "It is X's turn";
                 turnO = false;
             }
             else
             {
+                box.style.color = "black";
                 box.innerText = "X";
                 turn.innerText = "It is O's turn";
                 turnO = true;
